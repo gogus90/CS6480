@@ -1,93 +1,111 @@
 services:
-  hostA:
-    build: ./
+  hosta:
+    image: lab1:0.2
     container_name: hostA
-    networks: 
-      -networkA
+    networks:
+      - networka
     privileged: true
-  hostB:
-    build: ./
+    tty: true
+    stdin_open: true
+    entrypoint: /bin/bash
+  hostb:
+    image: lab1:0.2
     container_name: hostB
-    networks: 
-      -networkB
+    networks:
+      - networkb
     privileged: true
+    tty: true
+    stdin_open: true
+    entrypoint: /bin/bash
   router1:
-    build: ./
+    image: lab1:0.2
     container_name: router1
-    networks: 
-      -networkA
-      -network1_2
-      -network1_4
+    networks:
+      - networka
+      - network1_2
+      - network1_4
     privileged: true
+    tty: true
+    stdin_open: true
+    entrypoint: /bin/bash
   router2:
-    build: ./
+    image: lab1:0.2
     container_name: router2
-    networks: 
-      -network1_2
-      -network2_3
+    networks:
+      - network1_2
+      - network2_3
     privileged: true
+    tty: true
+    stdin_open: true
+    entrypoint: /bin/bash
   router3:
-    build: ./
+    image: lab1:0.2
     container_name: router3
-    networks: 
-      -network2_3
-      -network3_4
-      -networkB
+    networks:
+      - network2_3
+      - network3_4
+      - networkb
     privileged: true
+    tty: true
+    stdin_open: true
+    entrypoint: /bin/bash
   router4:
-    build: ./
+    image: lab1:0.2
     container_name: router4
-    networks: 
-      -network1_4
-      -network3_4
+    networks:
+      - network1_4
+      - network3_4
     privileged: true
+    tty: true
+    stdin_open: true
+    entrypoint: /bin/bash
 
 networks:
-  networkA:
-    driver: host
+  networka:
+    driver: bridge
     name: networkA
     attachable: true
     ipam:
       config:
-        -subnet: 10.0.11.0/24
-        -gateway: 10.0.11.1
+        - subnet: 10.0.11.0/24
+          gateway: 10.0.11.1
   network1_2:
     driver: bridge
     name: network1_2
     attachable: true
     ipam:
       config:
-        -subnet: 10.0.12.0/26
-        -gateway: 10.0.12.1
+        - subnet: 10.0.12.0/26
+          gateway: 10.0.12.1
   network2_3:
     driver: bridge
     name: network2_3
     attachable: true
     ipam:
       config:
-        -subnet: 10.0.12.64/26
-        -gateway: 10.0.12.65
+        - subnet: 10.0.12.64/26
+          gateway: 10.0.12.65
   network3_4:
     driver: bridge
     name: network3_4
     attachable: true
     ipam:
       config:
-        -subnet: 10.0.12.128/26
-        -gateway: 10.0.12.129
+        - subnet: 10.0.12.128/26
+          gateway: 10.0.12.129
   network1_4:
     driver: bridge
     name: network1_4
     attachable: true
     ipam:
       config:
-        -subnet: 10.0.12.192/26
-        -gateway: 10.0.12.193
-  networkB:
-    driver: host
+        - subnet: 10.0.12.192/26
+          gateway: 10.0.12.193
+  networkb:
+    driver: bridge
     name: networkB
     attachable: true
     ipam:
       config:
-        -subnet: 10.0.13.0/24
-        -gateway: 10.0.13.1
+        - subnet: 10.0.13.0/24
+          gateway: 10.0.13.1
