@@ -235,7 +235,7 @@ ping() {
 # -t [router1 | router2 | router3 | router4] run tcpdump on specified router
 # TODO docker exec -it [router] tcpdump
 tcpdump() {
-    case $1} in
+    case $1 in
         router2 | r2)
             sudo docker exec -it router2 tcpdump
             ;;

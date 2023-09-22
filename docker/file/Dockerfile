@@ -10,3 +10,5 @@ RUN apt-get install -y quagga-doc
 RUN apt-get install -y vim
 RUN apt-get install -y systemctl
 RUN apt-get install -y traceroute
+RUN apt-get install -y tcpdump
+
