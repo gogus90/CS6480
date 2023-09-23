@@ -16,6 +16,8 @@ init() {
 
 empty_files() {
     sudo docker exec -w /etc/quagga -it $1 touch babeld.conf bgpd.conf isis.conf ospf6d.conf ripd.conf ripngd.conf
+    sudo docker exec -it $1 touch /var/log/ospfd.log
+    sudo docker exec -it $1 chown quagga:quagga /var/log/ospfd.log
 }
 
 identical_files() {
@@ -40,6 +42,7 @@ conf_r1() {
     sudo docker exec -w /etc/quagga -it router1 sh -c "cat >ospfd.conf <<EOF
 hostname ospfd
 password zebra
+log file /var/log/ospfd.log
 interface eth0
   ip ospf cost 10
 interface eth1
@@ -52,8 +55,6 @@ router ospf
   network 10.0.11.0/24 area 0.0.0.0
   network 10.0.12.0/26 area 0.0.0.0
   network 10.0.12.192/26 area 0.0.0.0
-  redistribute static
-  redistribute connected
   line vty
 EOF"
 
@@ -76,6 +77,7 @@ conf_r2() {
     sudo docker exec -w /etc/quagga -it router2 sh -c "cat >ospfd.conf <<EOF
 hostname ospfd
 password zebra
+log file /var/log/ospfd.log
 interface eth0
   ip ospf cost 5
 interface eth1
@@ -84,8 +86,6 @@ router ospf
   ospf router-id 2.2.2.2
   network 10.0.12.0/26 area 0.0.0.0
   network 10.0.12.64/26 area 0.0.0.0
-  redistribute static
-  redistribute connected
   line vty
 EOF"
 
@@ -105,6 +105,7 @@ conf_r3() {
     sudo docker exec -w /etc/quagga -it router3 sh -c "cat >ospfd.conf <<EOF
 hostname ospfd
 password zebra
+log file /var/log/ospfd.log
 interface eth0
   ip ospf cost 10
 interface eth1
@@ -116,8 +117,6 @@ router ospf
   network 10.0.12.64/26 area 0.0.0.0
   network 10.0.12.128/26 area 0.0.0.0
   network 10.0.13.0/24 area 0.0.0.0
-  redistribute static
-  redistribute connected
   line vty
 EOF"
 
@@ -139,6 +138,7 @@ conf_r4() {
     sudo docker exec -w /etc/quagga -it router4 sh -c "cat >ospfd.conf <<EOF
 hostname ospfd
 password zebra
+log file /var/log/ospfd.log
 interface eth0
   ip ospf cost 10
 interface eth1
@@ -147,8 +147,6 @@ router ospf
   ospf router-id 4.4.4.4
   network 10.0.12.192/26 area 0.0.0.0
   network 10.0.12.128/26 area 0.0.0.0
-  redistribute static
-  redistribute connected
   line vty
 EOF"
 
