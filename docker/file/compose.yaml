@@ -3,7 +3,8 @@ services:
     image: lab1:0.2
     container_name: hostA
     networks:
-      - networka
+      networka:
+        ipv4_address: 10.0.11.2
     privileged: true
     tty: true
     stdin_open: true
@@ -12,7 +13,8 @@ services:
     image: lab1:0.2
     container_name: hostB
     networks:
-      - networkb
+      networkb:
+        ipv4_address: 10.0.13.2
     privileged: true
     tty: true
     stdin_open: true
@@ -21,9 +23,12 @@ services:
     image: lab1:0.2
     container_name: router1
     networks:
-      - networka
-      - network1_2
-      - network1_4
+      networka:
+        ipv4_address: 10.0.11.1
+      network1_2:
+        ipv4_address: 10.0.12.3
+      network1_4:
+        ipv4_address: 10.0.12.195
     privileged: true
     tty: true
     stdin_open: true
@@ -32,8 +37,10 @@ services:
     image: lab1:0.2
     container_name: router2
     networks:
-      - network1_2
-      - network2_3
+      network1_2:
+        ipv4_address: 10.0.12.2
+      network2_3:
+        ipv4_address: 10.0.12.66
     privileged: true
     tty: true
     stdin_open: true
@@ -42,9 +49,12 @@ services:
     image: lab1:0.2
     container_name: router3
     networks:
-      - network2_3
-      - network3_4
-      - networkb
+      network2_3:
+        ipv4_address: 10.0.12.67
+      network3_4:
+        ipv4_address: 10.0.12.131
+      networkb:
+        ipv4_address: 10.0.13.1
     privileged: true
     tty: true
     stdin_open: true
@@ -53,8 +63,10 @@ services:
     image: lab1:0.2
     container_name: router4
     networks:
-      - network1_4
-      - network3_4
+      network1_4:
+        ipv4_address: 10.0.12.194
+      network3_4:
+        ipv4_address: 10.0.12.130
     privileged: true
     tty: true
     stdin_open: true

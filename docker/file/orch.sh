@@ -62,7 +62,7 @@ EOF"
 hostname Router1
 password zebra
 interface eth0
-  ip address 10.0.11.3/24
+  ip address 10.0.11.1/24
 interface eth1
   ip address 10.0.12.195/26
 interface eth2
@@ -96,7 +96,7 @@ enable password zebra
 interface eth0
   ip address 10.0.12.2/26
 interface eth1
-  ip address 10.0.12.67/26
+  ip address 10.0.12.66/26
 line vty
 EOF"
 }
@@ -125,11 +125,11 @@ hostname Router3
 password zebra
 enable password zebra
 interface eth0
-  ip address 10.0.12.66/26
+  ip address 10.0.12.67/26
 interface eth1
   ip address 10.0.12.131/26
 interface eth2
-  ip address 10.0.13.3/24
+  ip address 10.0.13.1/24
 line vty
 EOF"
 }
@@ -267,7 +267,6 @@ remove_container() {
 }
 
 main() {
-    echo "main entered"
     case $1 in
         -i | --init)
         init
