@@ -63,7 +63,7 @@ EOF"
 hostname Router1
 password zebra
 interface eth0
-  ip address 10.0.11.1/24
+  ip address 10.0.11.3/24
 interface eth1
   ip address 10.0.12.195/26
 interface eth2
@@ -130,7 +130,7 @@ interface eth0
 interface eth1
   ip address 10.0.12.131/26
 interface eth2
-  ip address 10.0.13.1/24
+  ip address 10.0.13.3/24
 line vty
 EOF"
 }
