@@ -80,7 +80,6 @@ networks:
     ipam:
       config:
         - subnet: 10.0.11.0/24
-          gateway: 10.0.11.1
   network1_2:
     driver: bridge
     name: network1_2
@@ -88,7 +87,6 @@ networks:
     ipam:
       config:
         - subnet: 10.0.12.0/26
-          gateway: 10.0.12.1
   network2_3:
     driver: bridge
     name: network2_3
@@ -96,7 +94,6 @@ networks:
     ipam:
       config:
         - subnet: 10.0.12.64/26
-          gateway: 10.0.12.65
   network3_4:
     driver: bridge
     name: network3_4
@@ -104,7 +101,6 @@ networks:
     ipam:
       config:
         - subnet: 10.0.12.128/26
-          gateway: 10.0.12.129
   network1_4:
     driver: bridge
     name: network1_4
@@ -112,7 +108,6 @@ networks:
     ipam:
       config:
         - subnet: 10.0.12.192/26
-          gateway: 10.0.12.193
   networkb:
     driver: bridge
     name: networkB
@@ -120,4 +115,3 @@ networks:
     ipam:
       config:
         - subnet: 10.0.13.0/24
-          gateway: 10.0.13.1
