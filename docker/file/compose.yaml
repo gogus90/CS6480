@@ -24,7 +24,7 @@ services:
     container_name: router1
     networks:
       networka:
-        ipv4_address: 10.0.11.1
+        ipv4_address: 10.0.11.3
       network1_2:
         ipv4_address: 10.0.12.3
       network1_4:
@@ -54,7 +54,7 @@ services:
       network3_4:
         ipv4_address: 10.0.12.131
       networkb:
-        ipv4_address: 10.0.13.1
+        ipv4_address: 10.0.13.3
     privileged: true
     tty: true
     stdin_open: true

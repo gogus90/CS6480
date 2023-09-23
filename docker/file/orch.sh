@@ -12,7 +12,6 @@ init() {
     sudo docker build . -t lab1:0.2
     # TODO run docker compose
     sudo docker compose up -d
-    cd ...
     rm -f -r CS6480
 }
 
